@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "307102848946",
+    "project_id": "dbhakim-82cbd",
+    "storage_bucket": "dbhakim-82cbd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:307102848946:android:95bcee2db39f3ac67b76ab",
+        "android_client_info": {
+          "package_name": "com.example.hakim_travel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "307102848946-j3o6cdsl0415pmpta875b5b2nftsnvl3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVwcTagiXKHw50OQ3_jrqctWwWuHmvv1s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "307102848946-j3o6cdsl0415pmpta875b5b2nftsnvl3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "307102848946-908orvgda4neltqn3jiqd5n526vjn7cv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.hakimTravel"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
