@@ -602,7 +602,7 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.24):
     - BoringSSL-GRPC/Interface (= 0.0.24)
   - BoringSSL-GRPC/Interface (0.0.24)
-  - cloud_firestore (4.6.0):
+  - cloud_firestore (4.7.0):
     - Firebase/CoreOnly (~> 10.7.0)
     - Firebase/Firestore (~> 10.7.0)
     - firebase_core
@@ -613,7 +613,7 @@ PODS:
   - Firebase/Firestore (10.7.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 10.7.0)
-  - firebase_core (2.11.0):
+  - firebase_core (2.12.0):
     - Firebase/CoreOnly (~> 10.7.0)
     - FlutterMacOS
   - FirebaseCore (10.7.0):
@@ -716,8 +716,8 @@ DEPENDENCIES:
   - cloud_firestore (from `Flutter/ephemeral/.symlinks/plugins/cloud_firestore/macos`)
   - firebase_core (from `Flutter/ephemeral/.symlinks/plugins/firebase_core/macos`)
   - FlutterMacOS (from `Flutter/ephemeral`)
-  - path_provider_foundation (from `Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/macos`)
-  - shared_preferences_foundation (from `Flutter/ephemeral/.symlinks/plugins/shared_preferences_foundation/macos`)
+  - path_provider_foundation (from `Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin`)
+  - shared_preferences_foundation (from `Flutter/ephemeral/.symlinks/plugins/shared_preferences_foundation/darwin`)
 
 SPEC REPOS:
   trunk:
@@ -743,16 +743,16 @@ EXTERNAL SOURCES:
   FlutterMacOS:
     :path: Flutter/ephemeral
   path_provider_foundation:
-    :path: Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/macos
+    :path: Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin
   shared_preferences_foundation:
-    :path: Flutter/ephemeral/.symlinks/plugins/shared_preferences_foundation/macos
+    :path: Flutter/ephemeral/.symlinks/plugins/shared_preferences_foundation/darwin
 
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
   BoringSSL-GRPC: 3175b25143e648463a56daeaaa499c6cb86dad33
-  cloud_firestore: a20eac00035f7cede8df9b73a4877ba6237251b1
+  cloud_firestore: a480e1864db50d52f87d2db90cfef0ef3ab4c297
   Firebase: 0219acf760880eeec8ce479895bd7767466d9f81
-  firebase_core: 9f2535695972363edfcae32a85068dbd18ab3afc
+  firebase_core: 5e9dc7f63f5aba386924e257bd907c90918a1431
   FirebaseCore: e317665b9d744727a97e623edbbed009320afdd7
   FirebaseCoreInternal: d2b4acb827908e72eca47a9fd896767c3053921e
   FirebaseFirestore: 3963a6edd1c84b4748dab3e2c62624a29d03eca1
@@ -769,4 +769,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 353c8bcc5d5b0994e508d035b5431cfe18c1dea7
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

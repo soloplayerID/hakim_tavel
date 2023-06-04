@@ -142,23 +142,32 @@ class _HomeScreenState extends State<HomeScreen> {
                           scrollDirection: Axis.horizontal,
                           itemCount: 4,
                           itemBuilder: (context, index) {
-                            return Column(
-                              children: [
-                                Container(
-                                  margin: const EdgeInsets.only(right: 30),
-                                  width: 70,
-                                  height: 70,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: Colors.white,
-                                    image: const DecorationImage(
-                                      image: AssetImage("assets/icons/mountain.png"),
-                                        fit: BoxFit.cover
-                                    )
+                            return Container(
+                              margin: const EdgeInsets.only(right: 30),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    // margin: const EdgeInsets.only(right: 30),
+                                    width: 70,
+                                    height: 70,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: Colors.white,
+                                      image: const DecorationImage(
+                                        image: AssetImage("assets/icons/mountain.png"),
+                                          fit: BoxFit.cover
+                                      )
+                                    ),
                                   ),
-                                ),
-                                
-                              ],
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  Container(
+                                    child: const Text('Gunung', style: TextStyle(color: Colors.purple)),
+                                  )
+                                  
+                                ],
+                              ),
                             );
                         },),
                       ),
