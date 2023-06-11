@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+// ignore_for_file: avoid_print
+part of 'screen.dart';
 
-import '../helper/apps_style.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,6 +13,12 @@ class _HomeScreenState extends State<HomeScreen> {
   var db = FirebaseFirestore.instance;
   String username = "user";
   var date = DateTime.now();
+  var images = {
+    'mountain.png': 'Montain',
+    'city.png': 'City',
+    'forest.png': 'Forest',
+    'beach.png': 'Beach',
+  };
 
 
   @override
@@ -58,7 +62,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: 48,
                     child: ElevatedButton(
                       onPressed: () {
-                        
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const AccountInfoScreen()
+                            ));
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: kWhite,
@@ -135,12 +143,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       
-                      Container(
+                      SizedBox(
                         height: 100,
                         width: double.maxFinite,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: 4,
+                          itemCount: images.length,
                           itemBuilder: (context, index) {
                             return Container(
                               margin: const EdgeInsets.only(right: 30),
@@ -153,8 +161,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
                                       color: Colors.white,
-                                      image: const DecorationImage(
-                                        image: AssetImage("assets/icons/mountain.png"),
+                                      image: DecorationImage(
+                                        image: AssetImage("assets/icons/${images.keys.elementAt(index)}"),
                                           fit: BoxFit.cover
                                       )
                                     ),
@@ -162,9 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   const SizedBox(
                                     height: 5,
                                   ),
-                                  Container(
-                                    child: const Text('Gunung', style: TextStyle(color: Colors.purple)),
-                                  )
+                                Text(images.values.elementAt(index), style: const TextStyle(color: Colors.purple))
                                   
                                 ],
                               ),
@@ -174,7 +180,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(
                         height: 12,
                       ),
-                      Container(
+                      SizedBox(
                         height: 199,
                         child: ListView.builder(
                             scrollDirection: Axis.horizontal,
@@ -258,11 +264,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                         decoration: BoxDecoration(
                                           color: const Color(0xFFF5F6F8),
                                           borderRadius:
-                                              BorderRadius.circular(12),
+                                              BorderRadius.circular(12),  
                                         ),
                                         child: InkWell(
                                           onTap: () {
-                                            print('test');
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const ModalSearch()));
                                           },
                                           child: const IgnorePointer(
                                             child: TextField(
