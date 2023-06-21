@@ -1,7 +1,8 @@
 part of '../screen.dart';
 
 class DestinationScreen extends StatefulWidget {
-  const DestinationScreen({super.key});
+  final String location;
+  const DestinationScreen({super.key, required this.location});
 
   @override
   State<DestinationScreen> createState() => _DestinationScreenState();
@@ -97,7 +98,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                       SizedBox(
                           width: MediaQuery.of(context).size.width,
                           child: StreamBuilder(
-                            stream: db.collection('destinations').snapshots(),
+                            stream: db.collection('destinations').where('location', isEqualTo: widget.location).snapshots(),
                             builder: (context, snapshots) {
                             if(snapshots.connectionState == ConnectionState.waiting) {
                               return const Center(
@@ -128,19 +129,14 @@ class _DestinationScreenState extends State<DestinationScreen> {
                                     child: Row(
                                       children: [
                                         //animation or picture
-                                        // Container(
-                                        //   height: 100,
-                                        //   width: 100,
-                                        //   child: CachedNetworkImage(
-                                        //     imageUrl: widget.availModel
-                                        //         .avails[itemIndex].images,
-                                        //     placeholder: (context, url) =>
-                                        //         const CircularProgressIndicator(),
-                                        //     errorWidget:
-                                        //         (context, url, error) =>
-                                        //             const Icon(Icons.error),
-                                        //   ),
-                                        // ),
+                                        Container(
+                                          height: 100,
+                                          width: 100,
+                                          child: Image.asset(
+                                            "assets/dummy.png",
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
                                         const SizedBox(
                                           width: 10,
                                         ),

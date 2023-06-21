@@ -3,6 +3,8 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
+import '../screen.dart';
 class ModalSearch extends StatefulWidget {
   const ModalSearch({super.key});
 
@@ -19,13 +21,13 @@ class _ModalSearchState extends State<ModalSearch> {
   }
 
   void searchFromFirebase(String query) async {
-    final result = await FirebaseFirestore.instance
+    final result = (await FirebaseFirestore.instance
         .collection('destinations')
-        .where('location', isGreaterThanOrEqualTo: query)
-        .get();
+        .where('location', isEqualTo: query)
+        .get()).docs;
 
     setState(() {
-      searchResult = result.docs.map((e) => e.data()).toList();
+      searchResult = result.map((e) => e.data()).toList();
       print('=== $searchResult');
     });
   }
@@ -58,7 +60,7 @@ class _ModalSearchState extends State<ModalSearch> {
                             borderRadius: BorderRadius.circular(30)),
                       ),
                       onChanged: (query) {
-                        searchFromFirebase(query);
+                        searchFromFirebase(query.toLowerCase());
                       },
                     ),
                   ),
@@ -83,6 +85,11 @@ class _ModalSearchState extends State<ModalSearch> {
                     return ListTile(
                       onTap: () {
                         print(searchResult[index]['location']);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                     DestinationScreen(location: searchResult[index]['location'],)));
                       },
                       leading: SizedBox(
                         width: 60,

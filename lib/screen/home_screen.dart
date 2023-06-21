@@ -14,10 +14,10 @@ class _HomeScreenState extends State<HomeScreen> {
   String username = "user";
   var date = DateTime.now();
   var images = {
-    'mountain.png': 'Montain',
-    'city.png': 'City',
-    'forest.png': 'Forest',
-    'beach.png': 'Beach',
+    'mountain.png': 'Jakarta',
+    'city.png': 'Bandung',
+    'forest.png': 'Bali',
+    'beach.png': 'Yogyakarta',
   };
 
 
@@ -154,17 +154,20 @@ class _HomeScreenState extends State<HomeScreen> {
                               margin: const EdgeInsets.only(right: 30),
                               child: Column(
                                 children: [
-                                  Container(
-                                    // margin: const EdgeInsets.only(right: 30),
-                                    width: 70,
-                                    height: 70,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: Colors.white,
-                                      image: DecorationImage(
-                                        image: AssetImage("assets/icons/${images.keys.elementAt(index)}"),
-                                          fit: BoxFit.cover
-                                      )
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      // margin: const EdgeInsets.only(right: 30),
+                                      width: 70,
+                                      height: 70,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        color: Colors.white,
+                                        image: DecorationImage(
+                                          image: AssetImage("assets/icons/${images.keys.elementAt(index)}"),
+                                            fit: BoxFit.cover
+                                        )
+                                      ),
                                     ),
                                   ),
                                   const SizedBox(
@@ -290,7 +293,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                       height: 10,
                                     ),
                                     InkWell(
-                                      onTap: () {},
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const ModalSearch()));
+                                      },
                                       child: Container(
                                         padding: const EdgeInsets.all(8.0),
                                         decoration: BoxDecoration(

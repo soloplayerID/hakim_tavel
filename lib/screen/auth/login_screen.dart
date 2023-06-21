@@ -8,7 +8,7 @@ import 'package:hakim_travel/src/presenter/login_presenter.dart';
 import 'package:hakim_travel/src/state/login_state.dart';
 import 'package:hakim_travel/src/resources/session.dart';
 
-import '../../fragment/loading.dart';
+import '../fragment/loading.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
