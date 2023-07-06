@@ -46,7 +46,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                                   ),
                                 ),
                                 Text(
-                                  '...',
+                                  widget.location,
                                   style: GoogleFonts.nunito(
                                     fontSize: 14,
                                     color: const Color(0xFF4c4c4c),
@@ -59,7 +59,12 @@ class _DestinationScreenState extends State<DestinationScreen> {
                       ],
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ModalSearch()));
+                      },
                       child: Container(
                         width: 50,
                         height: 50,

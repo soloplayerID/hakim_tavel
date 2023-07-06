@@ -22,7 +22,11 @@ class UserApi {
       if (response.statusCode == 200) {
         LoginResponse postResult =
             LoginResponse.fromJson(json.decode(response.body));
-        return postResult;
+            if(postResult.success != false) {
+              return postResult;
+            }else{
+              return Future.error("User tidak ditemukan 🤷‍♂️");
+            }
       } else {
         return Future.error("User tidak ditemukan 🤷‍♂️");
       }

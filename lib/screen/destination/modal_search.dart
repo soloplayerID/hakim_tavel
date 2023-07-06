@@ -22,8 +22,8 @@ class _ModalSearchState extends State<ModalSearch> {
 
   void searchFromFirebase(String query) async {
     final result = (await FirebaseFirestore.instance
-        .collection('destinations')
-        .where('location', isEqualTo: query)
+        .collection('province')
+        .where('name', whereIn: [query])
         .get()).docs;
 
     setState(() {
@@ -84,12 +84,12 @@ class _ModalSearchState extends State<ModalSearch> {
                   itemBuilder: (context, index) {
                     return ListTile(
                       onTap: () {
-                        print(searchResult[index]['location']);
+                        print(searchResult[index]['name']);
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                     DestinationScreen(location: searchResult[index]['location'],)));
+                                     DestinationScreen(location: searchResult[index]['name'],)));
                       },
                       leading: SizedBox(
                         width: 60,
@@ -99,8 +99,7 @@ class _ModalSearchState extends State<ModalSearch> {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      title: Text(searchResult[index]['location']),
-                      subtitle: Text(searchResult[index]['name']),
+                      title: Text(searchResult[index]['name']),
                     );
                   },
                 ),

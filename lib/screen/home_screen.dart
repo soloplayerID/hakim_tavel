@@ -14,10 +14,10 @@ class _HomeScreenState extends State<HomeScreen> {
   String username = "user";
   var date = DateTime.now();
   var images = {
-    'mountain.png': 'Jakarta',
-    'city.png': 'Bandung',
-    'forest.png': 'Bali',
-    'beach.png': 'Yogyakarta',
+    'monas.png': 'jakarta',
+    'angklung.png': 'bandung',
+    'bali.png': 'bali',
+    'monument.png': 'yogyakarta',
   };
 
 
@@ -155,7 +155,16 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: Column(
                                 children: [
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  DestinationScreen(
+                                                    location:
+                                                        images.values.elementAt(index),
+                                                  )));
+                                    },
                                     child: Container(
                                       // margin: const EdgeInsets.only(right: 30),
                                       width: 70,
