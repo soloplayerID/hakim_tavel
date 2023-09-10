@@ -50,9 +50,12 @@ dependencies:
   skeleton_animation: ^0.1.4
   auto_size_text: ^3.0.0
   firebase_core: ^2.14.0
-  cloud_firestore: ^4.8.2
+  cloud_firestore: ^4.9.1
   lottie: ^2.3.2
   flutter_typeahead: ^4.6.1
+  gap: ^3.0.1
+  get: ^4.6.6
+  table_calendar: ^3.0.8
 
 dev_dependencies:
   flutter_test:

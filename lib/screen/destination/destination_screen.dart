@@ -38,9 +38,9 @@ class _DestinationScreenState extends State<DestinationScreen> {
                             Column(
                               children: [
                                 Text(
-                                  'Menampilkan hasil pencarian',
+                                  'Menampilkan hasil pencarian ke',
                                   style: GoogleFonts.nunito(
-                                    fontSize: 18,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                     color: const Color(0xFF4c4c4c),
                                   ),
@@ -60,10 +60,11 @@ class _DestinationScreenState extends State<DestinationScreen> {
                     ),
                     InkWell(
                       onTap: () {
+                        Navigator.pushReplacementNamed(context, "/home");
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const ModalSearch()));
+                                builder: (context) => const SearchScreen()));
                       },
                       child: Container(
                         width: 50,
@@ -101,98 +102,136 @@ class _DestinationScreenState extends State<DestinationScreen> {
                   child: Column(
                     children: [
                       SizedBox(
-                          width: MediaQuery.of(context).size.width,
-                          child: StreamBuilder(
-                            stream: db.collection('destinations').where('location', isEqualTo: widget.location).snapshots(),
+                        width: MediaQuery.of(context).size.width,
+                        child: StreamBuilder(
+                            stream: db
+                                .collection('travel')
+                                .where('destination',
+                                    isEqualTo: widget.location)
+                                .snapshots(),
                             builder: (context, snapshots) {
-                            if(snapshots.connectionState == ConnectionState.waiting) {
-                              return const Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            }
-                            if(snapshots.hasError) {
-                              return const Center(
-                                child: Text('Error')
-                              );
-                            }
-                            //Olah data
-                            var dataDestinations = snapshots.data!.docs;
-                            return ListView.builder(
-                              scrollDirection: Axis.vertical,
-                              shrinkWrap: true,
-                              itemCount: dataDestinations.length,
-                              itemBuilder: (context, index) {
-                              return Container(
-                                    height: 120,
-                                    margin: const EdgeInsets.symmetric(
-                                        vertical: 5.0),
-                                    padding: const EdgeInsets.all(10),
-                                    decoration: BoxDecoration(
-                                        color: const Color(0XFFf5f6f8),
-                                        borderRadius:
-                                            BorderRadius.circular(12)),
-                                    child: Row(
-                                      children: [
-                                        //animation or picture
-                                        Container(
-                                          height: 100,
-                                          width: 100,
-                                          child: Image.asset(
-                                            "assets/dummy.png",
-                                            fit: BoxFit.cover,
+                              if (snapshots.connectionState ==
+                                  ConnectionState.waiting) {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
+                              if (snapshots.hasError) {
+                                return const Center(child: Text('Error'));
+                              }
+                              //Olah data
+                              var dataDestinations = snapshots.data!.docs;
+                              return ListView.builder(
+                                scrollDirection: Axis.vertical,
+                                shrinkWrap: true,
+                                itemCount: dataDestinations.length,
+                                itemBuilder: (context, index) {
+                                  return InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  DetailScreen(
+                                                    imgUrl:
+                                                        dataDestinations[index]
+                                                            .data()['image'],
+                                                    placeName:
+                                                        dataDestinations[index]
+                                                            .data()['name'],
+                                                    rating: 1,
+                                                  )));
+                                    },
+                                    child: Container(
+                                      height: 120,
+                                      margin: const EdgeInsets.symmetric(
+                                          vertical: 5.0),
+                                      padding: const EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                          color: const Color(0XFFf5f6f8),
+                                          borderRadius:
+                                              BorderRadius.circular(12)),
+                                      child: Row(
+                                        children: [
+                                          //animation or picture
+                                          dataDestinations[index]
+                                                      .data()['image'] ==
+                                                  null
+                                              ? Container(
+                                                  height: 100,
+                                                  width: 100,
+                                                  child: Image.asset(
+                                                    "assets/dummy.png",
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                )
+                                              : Container(
+                                                  height: 100,
+                                                  width: 100,
+                                                  child: Image.asset(
+                                                    "assets/img/${dataDestinations[index].data()['image']}",
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                          const SizedBox(
+                                            width: 10,
                                           ),
-                                        ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        // how do you feel + get started button
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                dataDestinations[index].data()['name'],
-                                                style: GoogleFonts.nunito(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.bold,
-                                                  color:
-                                                      const Color(0xFF4c4c4c),
+                                          // how do you feel + get started button
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  dataDestinations[index]
+                                                      .data()['name'],
+                                                  style: GoogleFonts.nunito(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.bold,
+                                                    color:
+                                                        const Color(0xFF4c4c4c),
+                                                  ),
                                                 ),
-                                              ),
-                                              const SizedBox(
-                                                height: 8,
-                                              ),
-                                              Text(
-                                                dataDestinations[index]
-                                                    .data()['location'],
-                                                style: GoogleFonts.nunito(
-                                                  fontSize: 12,
-                                                  color:
-                                                      const Color(0xFF4c4c4c),
+                                                const SizedBox(
+                                                  height: 8,
                                                 ),
-                                              ),
-                                              const SizedBox(
-                                                height: 12,
-                                              ),
-                                              Text(
-                                                'Rp. Mahal',
-                                                style: GoogleFonts.nunito(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.bold,
-                                                  color:
-                                                      const Color(0xFFE91E5A),
+                                                Text(
+                                                  '${dataDestinations[index].data()['kelas']} 🌟',
+                                                  style: GoogleFonts.nunito(
+                                                    fontSize: 13,
+                                                    color:
+                                                        const Color(0xFF4c4c4c),
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                                const SizedBox(
+                                                  height: 14,
+                                                ),
+                                                Text(
+                                                  '${CurrencyFormat.convertToIdr(dataDestinations[index].data()['harga'])}/kursi',
+                                                  style: GoogleFonts.nunito(
+                                                    fontSize: 15,
+                                                    fontWeight: FontWeight.bold,
+                                                    color:
+                                                        const Color(0xFFE91E5A),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
-                                        )
-                                      ],
+                                          Text(
+                                            '${dataDestinations[index].data()['jam']} ⌚',
+                                            style: GoogleFonts.nunito(
+                                              fontSize: 13,
+                                              color: const Color(0xFF4c4c4c),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   );
-                            },);
-                          }
-                          ),
+                                },
+                              );
+                            }),
                       ),
                     ],
                   ),

@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 part of 'screen.dart';
 
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -14,12 +13,11 @@ class _HomeScreenState extends State<HomeScreen> {
   String username = "user";
   var date = DateTime.now();
   var images = {
-    'monas.png': 'jakarta',
-    'angklung.png': 'bandung',
-    'bali.png': 'bali',
-    'monument.png': 'yogyakarta',
+    'bus.png': 'Travel',
+    'vacations.png': 'Liburan',
+    'hotel.png': 'Hotel',
+    'pick-car.png': 'Antar-Jemput',
   };
-
 
   @override
   Widget build(BuildContext context) {
@@ -33,30 +31,28 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Container(
-                    height: 51,
-                    width: 51,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: kLightBlue,
-                        image: const DecorationImage(
-                            image: NetworkImage(
-                                'https://cdn3d.iconscout.com/3d/premium/thumb/man-avatar-6299539-5187871.png'))),
-                  ),
-                  const Spacer(),
+                  // Container(
+                  //   height: 51,
+                  //   width: 51,
+                  //   decoration: BoxDecoration(
+                  //       borderRadius: BorderRadius.circular(16),
+                  //       color: kLightBlue,
+                  //       image: const DecorationImage(
+                  //           image: NetworkImage(
+                  //               'https://cdn3d.iconscout.com/3d/premium/thumb/man-avatar-6299539-5187871.png'))),
+                  // ),
+                  // const Spacer(),
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Selamat Datang',
-                            style: knunitoBold.copyWith(fontSize: 12)),
+                        Text('Hakim Travel',
+                            style: knunitoBold.copyWith(fontSize: 14)),
                         // Text(
                         //     '${DateFormat('EEEE').format(date)} ${DateFormat('d MMM, yyyy').format(date)}',
                         //     style: knunitoRegularBold.copyWith(
                         //         color: kGrey, fontSize: 12)),
                       ]),
-                  const SizedBox(
-                    width: 12,
-                  ),
+                  const Spacer(),
                   SizedBox(
                     height: 48,
                     width: 48,
@@ -65,8 +61,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const AccountInfoScreen()
-                            ));
+                                builder: (context) =>
+                                    const AccountInfoScreen()));
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: kWhite,
@@ -142,7 +138,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      
                       SizedBox(
                         height: 100,
                         width: double.maxFinite,
@@ -161,8 +156,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                           MaterialPageRoute(
                                               builder: (context) =>
                                                   DestinationScreen(
-                                                    location:
-                                                        images.values.elementAt(index),
+                                                    location: images.values
+                                                        .elementAt(index),
                                                   )));
                                     },
                                     child: Container(
@@ -170,24 +165,26 @@ class _HomeScreenState extends State<HomeScreen> {
                                       width: 70,
                                       height: 70,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color: Colors.white,
-                                        image: DecorationImage(
-                                          image: AssetImage("assets/icons/${images.keys.elementAt(index)}"),
-                                            fit: BoxFit.cover
-                                        )
-                                      ),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color: Colors.white,
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  "assets/icons/${images.keys.elementAt(index)}"),
+                                              fit: BoxFit.cover)),
                                     ),
                                   ),
                                   const SizedBox(
                                     height: 5,
                                   ),
-                                Text(images.values.elementAt(index), style: const TextStyle(color: Colors.purple))
-                                  
+                                  Text(images.values.elementAt(index),
+                                      style:
+                                          const TextStyle(color: Colors.purple))
                                 ],
                               ),
                             );
-                        },),
+                          },
+                        ),
                       ),
                       const SizedBox(
                         height: 12,
@@ -276,7 +273,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         decoration: BoxDecoration(
                                           color: const Color(0xFFF5F6F8),
                                           borderRadius:
-                                              BorderRadius.circular(12),  
+                                              BorderRadius.circular(12),
                                         ),
                                         child: InkWell(
                                           onTap: () {
@@ -284,7 +281,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        const ModalSearch()));
+                                                        const SearchScreen()));
                                           },
                                           child: const IgnorePointer(
                                             child: TextField(
@@ -307,7 +304,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const ModalSearch()));
+                                                    const SearchScreen()));
                                       },
                                       child: Container(
                                         padding: const EdgeInsets.all(8.0),
@@ -366,7 +363,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(
                         height: 25,
                       ),
-                      
                     ],
                   ),
                 ),

@@ -121,7 +121,7 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             const Text(
-                              'ilham taufik',
+                              'Abdul Hakim',
                               style: TextStyle(fontSize: 18),
                             ),
                             InkWell(
@@ -150,7 +150,7 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             const Text(
-                              'ilhamtaufikp@gmail.com',
+                              'abdulhakim@gmail.com',
                               style: TextStyle(fontSize: 18),
                             ),
                             InkWell(
