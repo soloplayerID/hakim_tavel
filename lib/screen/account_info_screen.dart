@@ -109,7 +109,6 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        
                         const Text(
                           'Nama Lengkap',
                           style: TextStyle(fontSize: 16),
@@ -156,11 +155,11 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
                             InkWell(
                               onTap: () {},
                               child: Text(
-                            'Ubah',
-                            style: TextStyle(
-                                color: Colors.grey.withOpacity(1.0),
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold),
+                                'Ubah',
+                                style: TextStyle(
+                                    color: Colors.grey.withOpacity(1.0),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
                           ],
@@ -199,9 +198,7 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
                         ),
                         const Divider(),
                         InkWell(
-                          onTap: () {
-                            
-                          },
+                          onTap: () {},
                           child: SizedBox(
                             height: 40,
                             child: Row(
@@ -219,8 +216,7 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
                                     ),
                                     Text('History Pesanan',
                                         style: GoogleFonts.poppins(
-                                            color: Colors.black,
-                                            fontSize: 18)),
+                                            color: Colors.black, fontSize: 18)),
                                   ],
                                 ),
                                 const Icon(
@@ -264,13 +260,12 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
                             ),
                           ),
                         ),
-                        
-                        
                         const SizedBox(
                           height: 40.0,
                         ),
                         Container(
-                          padding: const EdgeInsets.only(left: 8.0),
+                          padding: const EdgeInsets.only(left: 12.0),
+                          // width: MediaQuery.of(context).size.width / 1.2,
                           child: InkWell(
                             splashColor: const Color(0xff7474BF),
                             onTap: () {},

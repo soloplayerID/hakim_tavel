@@ -50,17 +50,24 @@ android {
         applicationId "com.example.hakim_travel"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion 23
-        targetSdkVersion 32
+        minSdkVersion 24
+        targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
 
+    signingConfigs {
+       release {
+            keyAlias 'upload'
+            keyPassword 'root12345'
+            storeFile file('c:\\Users\\soloplayerID\\hakim-keystore.jks');
+            // storeFile file('/Users/ilhamtaufik/key_tpmatt.jks');
+            storePassword 'root12345'
+        }
+   }
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
         }
     }
 }

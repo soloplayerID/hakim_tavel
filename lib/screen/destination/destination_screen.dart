@@ -133,13 +133,22 @@ class _DestinationScreenState extends State<DestinationScreen> {
                                           MaterialPageRoute(
                                               builder: (context) =>
                                                   DetailScreen(
+                                                    harga:
+                                                        dataDestinations[index]
+                                                            .data()['harga'],
                                                     imgUrl:
                                                         dataDestinations[index]
                                                             .data()['image'],
                                                     placeName:
                                                         dataDestinations[index]
                                                             .data()['name'],
-                                                    rating: 1,
+                                                    desc:
+                                                        dataDestinations[index]
+                                                            .data()['desc'],
+                                                    destination:
+                                                        dataDestinations[index]
+                                                                .data()[
+                                                            'destination'],
                                                   )));
                                     },
                                     child: Container(

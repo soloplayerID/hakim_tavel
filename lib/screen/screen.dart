@@ -23,3 +23,4 @@ part 'destination/modal_search.dart';
 part 'account_info_screen.dart';
 part 'fragment/app_layout.dart';
 part 'destination/detail_screen.dart';
+part 'payment/checkout_screen.dart';

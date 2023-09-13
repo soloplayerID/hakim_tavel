@@ -3,12 +3,16 @@ part of '../screen.dart';
 class DetailScreen extends StatefulWidget {
   final String imgUrl;
   final String placeName;
-  final double rating;
+  final String destination;
+  final String desc;
+  final int harga;
   const DetailScreen(
       {super.key,
       required this.imgUrl,
       required this.placeName,
-      required this.rating});
+      required this.destination,
+      required this.desc,
+      required this.harga});
 
   @override
   State<DetailScreen> createState() => _DetailScreenState();
@@ -26,7 +30,7 @@ class _DetailScreenState extends State<DetailScreen> {
               Stack(
                 children: [
                   Image.asset(
-                    "assets/img/ilham.jpg",
+                    "assets/img/${widget.imgUrl}",
                     height: 350,
                     width: MediaQuery.of(context).size.width,
                     fit: BoxFit.cover,
@@ -90,19 +94,19 @@ class _DetailScreenState extends State<DetailScreen> {
                               const SizedBox(
                                 height: 12,
                               ),
-                              const Row(
+                              Row(
                                 children: [
-                                  Icon(
+                                  const Icon(
                                     Icons.location_on,
                                     color: Colors.white70,
                                     size: 25,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 8,
                                   ),
                                   Text(
-                                    "Koh Chang Tai, Thailand",
-                                    style: TextStyle(
+                                    widget.destination,
+                                    style: const TextStyle(
                                         color: Colors.white70,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 17),
@@ -145,7 +149,7 @@ class _DetailScreenState extends State<DetailScreen> {
                         )
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
               // Row(
@@ -181,14 +185,56 @@ class _DetailScreenState extends State<DetailScreen> {
               // ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: const Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut scelerisque arcu quis eros auctor, eu dapibus urna congue. Nunc nisi diam, semper maximus risus dignissim, semper maximus nibh. Sed finibus ipsum eu erat finibus efficitur. ",
+                child: Text(
+                  widget.desc,
                   textAlign: TextAlign.start,
-                  style: TextStyle(
-                      fontSize: 15,
-                      height: 1.5,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff879D95)),
+                  style: GoogleFonts.nunito(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: const Color(0xff879D95),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              Container(
+                padding: const EdgeInsets.only(left: 8.0),
+                // width: MediaQuery.of(context).size.width / 1.2,
+                child: InkWell(
+                  splashColor: const Color(0xff7474BF),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CheckoutScreen(
+                                  destination: widget.destination,
+                                  placeName: widget.placeName,
+                                  harga: widget.harga,
+                                )));
+                  },
+                  child: Container(
+                    height: 43,
+                    width: MediaQuery.of(context).size.width / 1.2,
+                    decoration: BoxDecoration(
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.black26,
+                            offset: Offset(0, 28),
+                            blurRadius: 40,
+                            spreadRadius: -12)
+                      ],
+                      color: const Color(0XFFFFC90E),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        "Pesan",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
                 ),
               ),
               // SizedBox(
